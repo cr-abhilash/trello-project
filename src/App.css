@@ -3,3 +3,24 @@
   box-sizing: border-box;
   padding:0px;
 }
+.Link{
+  text-decoration: none;
+  
+}
+.content{
+  display:flex;
+  justify-content: space-around;
+  margin-left:10%;
+  margin-right:10%;
+  margin-top: 3%;
+}
+.content .body{
+  flex:2;
+  margin-left:2%;
+ 
+}
+.content .nav{
+  flex:1;
+ 
+ 
+}

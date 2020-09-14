@@ -2,7 +2,7 @@ import React ,{Component}from 'react';
 import './App.css';
 import Header from './Header/Header';
 import {BrowserRouter as Router, Route,Link,Switch} from 'react-router-dom'
-
+import SideBar2 from './sidebar/sideBar2';
 
 class  App extends Component{
   constructor(props){
@@ -19,6 +19,9 @@ class  App extends Component{
     <Router>
     <div className="App">
       <Header></Header>
+      <div className="content">
+       <SideBar2></SideBar2>
+       </div>
     </div>
     </Router>
   );
