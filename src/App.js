@@ -5,6 +5,8 @@ import Body from './body/Body'
 import Home from './body/Home'
 import {BrowserRouter as Router, Route,Link,Switch} from 'react-router-dom'
 import SideBar2 from './sidebar/sideBar2';
+import List from './Lists/List'
+
 
 class  App extends Component{
   constructor(props){
@@ -13,7 +15,8 @@ class  App extends Component{
     this.state = {
       token:"374c221b4185e80027a402574dc071768d32336c175b07d821f47c7cdfbaecf2",
       key:"5c73e280ffee643ce764c6df16a719b5",
-       boards:[]
+       boards:[],
+       updateState:""
     }
   }
   async componentDidMount(){
@@ -24,11 +27,17 @@ class  App extends Component{
     console.log(data)
     this.setState({
       boards:data
-      
     })
 }
+
   
-  render(){
+ UpdateState= (data)=>{
+      this.setState({
+        updateState:data
+      },()=> console.log(this.state.updateState))
+ }
+   render(){
+    console.log("component rendered")
   return (
     <Router>
     <div className="App">
@@ -36,8 +45,9 @@ class  App extends Component{
       <div className="content">
        <SideBar2></SideBar2>
        <Route exact path="/" component={Home} />
-       <Route path="/Boards" component={(props)=><Body {...props} data={this.state.boards}/>}/>
+       <Route path="/Boards" component={(props)=><Body {...props} data={this.state.boards} ParentState={this.UpdateState}/>}/>
       </div>
+      <Route path="/lists" component={List}/>
     </div>
     </Router>
   );

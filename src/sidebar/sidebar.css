@@ -1,11 +1,11 @@
 
-.nav{
-    list-style-type: none;
-    background-color: white;
-    max-Width: 250px;
-    font-size:18px;
-    
+ul{
+    list-style-type: none !important; 
+    background-color: white !important;
+    max-Width: 250px !important;
+    font-size:18px !important;
 }
+
 li{
     margin:3px;
     padding:5px;

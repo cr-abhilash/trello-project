@@ -19,6 +19,9 @@
     flex-wrap: wrap;
     justify-content: space-between;
 }
+.boards Link{
+    text-decoration: none;
+}
 .body{
     display: flex;
     flex-direction: column;
