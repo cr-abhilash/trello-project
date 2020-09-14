@@ -1,0 +1,31 @@
+.header{
+    background-color: rgb(11, 145, 235);
+    display:flex;
+    color:whitesmoke;
+    justify-content: space-between;
+    align-items: center;
+    padding:2px;
+}
+.header > *{
+    display:flex;
+}
+.header .div > * {
+    display: inline-block;
+    text-decoration: none;
+    padding:5px;
+    color:white;
+    background-color:rgb(159, 175, 185);
+    margin:3px;
+    align-self: center;
+}
+.header .title{
+    color: rgb(190, 204, 204) !important;
+    font-weight: 1000 !important;
+    word-spacing: 5px !important;
+    
+}
+.title:hover{
+    color:white !important;
+   
+}
+
