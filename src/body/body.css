@@ -1,5 +1,24 @@
-
-
+.board1{
+    width:180px;
+    height:100px;
+    color:white;
+    border-radius: 10px;
+    padding:5px;
+    margin:10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover ;
+}
+.newBoard{
+    color:rgb(21, 150, 182) !important;
+    text-decoration: none;
+    background-color: khaki;
+}
+.boards{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 .body{
     display: flex;
     flex-direction: column;
@@ -8,4 +27,5 @@
     display: flex;
     color:rgb(21, 150, 182);
     margin: 10px;
+    
 }
