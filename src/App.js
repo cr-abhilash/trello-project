@@ -1,6 +1,8 @@
 import React ,{Component}from 'react';
 import './App.css';
 import Header from './Header/Header';
+import Body from './body/Body'
+import Home from './body/Home'
 import {BrowserRouter as Router, Route,Link,Switch} from 'react-router-dom'
 import SideBar2 from './sidebar/sideBar2';
 
@@ -21,6 +23,7 @@ class  App extends Component{
       <Header></Header>
       <div className="content">
        <SideBar2></SideBar2>
+       <Home></Home>
        </div>
     </div>
     </Router>

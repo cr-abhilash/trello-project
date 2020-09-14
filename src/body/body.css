@@ -1,0 +1,11 @@
+
+
+.body{
+    display: flex;
+    flex-direction: column;
+}
+.body .title{
+    display: flex;
+    color:rgb(21, 150, 182);
+    margin: 10px;
+}
