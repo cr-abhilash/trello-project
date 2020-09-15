@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-//import SimpleList from './Listitems'
+import SimpleList from './Listitems'
 
 class List extends Component{
     constructor(props) {
@@ -20,13 +20,32 @@ class List extends Component{
        const dataList = await res.json();
        const res2= await fetch(`https://api.trello.com/1/boards/5eaefe609dc0505416efe976/cards?key=${this.state.key}&token=${this.state.token}`)
        const dataCards = await res2.json();
-    }
+       const data=dataList.map(({id:listId,name:listName})=>{
+        let temp1=[]
+        dataCards.map(({id:cardId,name:cardName,idChecklists,idList})=>{
+             if(listId==idList){
+                 let temp={}
+                 temp["cardId"]=cardId;
+                 temp["cardName"]=cardName;
+                 temp["checkId"]=idChecklists;
+                 temp1.push(temp);
+             }
+            
+        })
+        return <SimpleList key={listId} cardData={temp1} listData={{id:listId,name:listName}}/>;
+       })
+      this.setState({
+     lists:dataList,
+     cards:dataCards,
+     listData:data
+})
+console.log(this.state.listData)
+}
        
     render(){
         return (
             <div style={{maxHeight:"91vh",display:"flex",overflow:"scroll",marginTop:5}}>
               {this.state.listData}
-              
             </div>
         )
     }
