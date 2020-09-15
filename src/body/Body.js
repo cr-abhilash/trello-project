@@ -54,7 +54,7 @@ class Body extends React.Component {
         <strong>Personal Boards</strong>
         </div>
         <div className="boards">
-           <FormDialog title="Create New Board" submit={this.handleSubmit} label="Enter Board Name"></FormDialog>
+           <FormDialog Stylename="board1" title="Create New Board" submit={this.handleSubmit} label="Enter Board Name"></FormDialog>
            {this.state.boardData.map(({id,name,prefs})=>{
         return <div  onClick={this.NavigateList} value={id} key={id} className="board1"
         style={

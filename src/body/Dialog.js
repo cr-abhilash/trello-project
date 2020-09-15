@@ -7,7 +7,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-export default function FormDialog({title,submit,label}) {
+export default function FormDialog({title,submit,label,Stylename}) {
   const [open, setOpen] = React.useState(false);
   const [name, setName] = React.useState("");
 
@@ -30,8 +30,8 @@ export default function FormDialog({title,submit,label}) {
   }
   
   return (
-    <div className="board1" style={{backgroundColor:"rgb(199, 192, 192) !important"}}>
-      <Button  className="board1" onClick={handleClickOpen}>
+    <div className={Stylename} style={{backgroundColor:"rgb(199, 192, 192) !important"}}>
+      <Button  className={Stylename} onClick={handleClickOpen}>
         {title}
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">

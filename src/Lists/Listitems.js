@@ -1,11 +1,13 @@
 import React from 'react';
-
+import FormDialog from '../body/Dialog';
 import Button from '@material-ui/core/Button'
 import CardList from './Card'
 import './ListItem.css'
 
 
+const handleSubmit=()=>{
 
+}
 
 
 export default function SimpleList({cardData,listData}) {
@@ -21,11 +23,8 @@ export default function SimpleList({cardData,listData}) {
             })} 
         </div>
         <div className="footer">
-           <Button className="cardButton">
-             Add another Card
-           </Button>
-        </div>
-            
+        <FormDialog Stylename="cardButton" title="Create New Card" submit={handleSubmit} label="Enter Card Name"></FormDialog>
+        </div>  
     </div>
   );
 }

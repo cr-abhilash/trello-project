@@ -31,5 +31,14 @@
     display: flex;
     color:rgb(21, 150, 182);
     margin: 10px;
-    
+}
+.ListStyle{
+    width:300px;
+    color:black;
+    height: 50px;
+    background-Color:#ebecf0;
+}
+.cardButton{
+    width:250px;
+    margin-left: 20px;
 }

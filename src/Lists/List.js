@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import SimpleList from './Listitems'
+import FormDialog from '../body/Dialog'
 
 class List extends Component{
     constructor(props) {
@@ -46,6 +47,7 @@ console.log(this.state.listData)
         return (
             <div style={{maxHeight:"91vh",display:"flex",overflow:"scroll",marginTop:5}}>
               {this.state.listData}
+              <FormDialog Stylename="ListStyle" title="Create New List" submit={this.handleSubmit} label="Enter List Name"></FormDialog>
             </div>
         )
     }
