@@ -3,9 +3,11 @@ import './App.css';
 import Header from './Header/Header';
 import Body from './body/Body'
 import Home from './body/Home'
-import {BrowserRouter as Router, Route,Link,Switch} from 'react-router-dom'
+import {MemoryRouter as Router, Route,Link,Switch} from 'react-router-dom'
 import SideBar2 from './sidebar/sideBar2';
 import List from './Lists/List'
+import Content from './content/Content';
+import CheckList from './Lists/Checklist'
 
 
 class  App extends Component{
@@ -42,12 +44,11 @@ class  App extends Component{
     <Router>
     <div className="App">
       <Header></Header>
-      <div className="content">
-       <SideBar2></SideBar2>
-       <Route exact path="/" component={Home} />
-       <Route path="/Boards" component={(props)=><Body {...props} data={this.state.boards} ParentState={this.UpdateState}/>}/>
-      </div>
-      <Route path="/lists" component={List}/>
+      <Switch>
+      <Route path="/boards/:boardid" render={props =>(<List {...props}/>)} />
+      <Route path="/check" render={props =>(<CheckList prop={props}/>)} />
+      <Route path="/" render={ props => (<Content  boards={this.state.boards}/>)} />
+      </Switch>
     </div>
     </Router>
   );

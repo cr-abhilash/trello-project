@@ -8,7 +8,7 @@ function SideBar2() {
                 <Link  className="Link" to="/">
                      <li><strong>HOME</strong></li>
                 </Link>
-                <Link  className="Link" to="/Boards">
+                <Link  className="Link" to="/boards">
                   <li><strong>BOARDS</strong></li>
                 </Link>
                 <Link className="Link"><li><strong>TEMPLATES</strong></li></Link>

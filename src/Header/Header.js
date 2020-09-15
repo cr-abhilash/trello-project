@@ -24,7 +24,7 @@ function Header() {
             <div className="div">
               <AppsOutlinedIcon fontSize="small"/>
               <Link className="Link" to="/"><HomeOutlinedIcon fontSize="small"/></Link>
-              <Link className="Link" to="/Boards">Boards</Link>
+              <Link className="Link" to="/boards">Boards</Link>
               <SearchOutlinedIcon fontSize="small"/>
             </div>
             <em className="title">Trello</em>
