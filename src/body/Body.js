@@ -17,9 +17,9 @@ class Body extends React.Component {
         }
     }
      NavigateList= (event)=>{
+       console.log(this.props)
        let id=event.target.getAttribute("value")
        this.props.history.push(`/boards/${id}`)
-        
     }
     async componentDidMount(){
         console.log("component renderd")

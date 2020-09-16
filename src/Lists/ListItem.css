@@ -7,11 +7,12 @@
       border-radius:10;
       box-sizing: border-box;
   }
-    .cards{
-      width: 300px  ;
-      max-height:75vh;
+  .cards{
+      width: 300px;
+      max-height: 75vh;
       overflow:auto;
-      background-Color:#ebecf0;
+      background-Color:ebecf0;
+      box-sizing: border-box;
   }
   .header2{
       width:100%;

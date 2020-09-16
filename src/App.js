@@ -7,7 +7,7 @@ import {MemoryRouter as Router, Route,Link,Switch} from 'react-router-dom'
 import SideBar2 from './sidebar/sideBar2';
 import List from './Lists/List'
 import Content from './content/Content';
-//import CheckList from './Lists/Checklist'
+import CheckList from './Lists/Checklist'
 
 
 class  App extends Component{
@@ -46,7 +46,7 @@ class  App extends Component{
       <Header></Header>
       <Switch>
       <Route path="/boards/:boardid" render={props =>(<List {...props}/>)} />
-      {/* <Route path="/check" render={props =>(<CheckList prop={props}/>)} /> */}
+       <Route path="/check" render={props =>(<CheckList prop={props}/>)} /> 
       <Route path="/" render={ props => (<Content  boards={this.state.boards}/>)} />
       </Switch>
     </div>

@@ -1,16 +1,17 @@
 import React from 'react';
 import FormDialog from '../body/Dialog';
 import Button from '@material-ui/core/Button'
-import CardList from './Card'
-import './ListItem.css'
 
+import './ListItem.css'
+import {Link} from 'react-router-dom'
+import CheckList from './Checklist'
 
 const handleSubmit=()=>{
 
 }
 
 
-export default function SimpleList({cardData,listData}) {
+export default function SimpleList({cardData,listData,url}) {
  
   return (
     <div className="root">
@@ -19,7 +20,8 @@ export default function SimpleList({cardData,listData}) {
         </div>
         <div className="cards">
              {cardData.map((data)=>{
-                return <CardList CardData={data}/>
+                console.log(data.checkId)
+                return (<CheckList {...data}></CheckList>)
             })} 
         </div>
         <div className="footer">
