@@ -9,7 +9,6 @@ import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import AppsOutlinedIcon from '@material-ui/icons/AppsOutlined';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import {Link} from 'react-router-dom'
-import { Autorenew } from '@material-ui/icons';
 let customStyles={
     color:"white",
     backgroundColor:"rgb(159, 175, 185)",

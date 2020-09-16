@@ -7,11 +7,13 @@
     margin:10px;
     background-position: center;
     background-repeat: no-repeat;
-    background-size:cover ;
-    
+    background-size:cover;
+}
+.Button{
+    background-color: #E7E9ED !important;
 }
 .newBoard{
-    color:rgb(21, 150, 182) !important;
+    color:#085B8E !important;
     text-decoration: none;
     background-color: khaki;
 }
@@ -34,17 +36,27 @@
 }
 .ListStyle{
     width:300px;
-    color:black;
+    color:white !important;
     height: 50px;
-    background-Color:#ebecf0;
+    background-Color:#5397CE;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size: 14px !important;
 }
 .cardButton{
     width:250px;
     margin-left: 20px;
+    border:0.1px solid;
+    border-radius: 10px;
+    color:#5d606b !important;
+    font-size: 14px !important;
 }
 .checkList{
     width:250px;
-    height:100px;
-    color:black;
+    margin-left: 20px;
+    border:0.1px solid;
+    border-radius: 10px;
+    color:#5d606b !important;
+    font-size: 14px !important;
     
 }

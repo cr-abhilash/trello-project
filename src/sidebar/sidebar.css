@@ -11,8 +11,13 @@ li{
     padding:5px;
     border-radius:5%;
     padding-left: 20px;
+    color:rgb(56, 50, 50);
 }
 li:hover{
-    background-color: rgb(220, 241, 247);
-    color: rgb(61, 179, 209)
+    background-color: #E7E9ED;
+    color: #0179BF
+}
+li:active{
+    background-color: #E4F0F6;
+    color: #0179BF
 }

@@ -9,8 +9,7 @@ class List extends Component{
         super(props)
         
         this.state = {
-            token:"374c221b4185e80027a402574dc071768d32336c175b07d821f47c7cdfbaecf2",
-            key:"5c73e280ffee643ce764c6df16a719b5",
+            
             id:props.match.params.boardid,
              lists:[],
              cards:[],
@@ -19,11 +18,18 @@ class List extends Component{
     }
     async componentDidMount(){
         console.log(this.props)
-        const res= await fetch(`https://api.trello.com/1/boards/${this.state.id}/lists?key=${this.state.key}&token=${this.state.token}`)
-       const dataList = await res.json();
-       const res2= await fetch(`https://api.trello.com/1/boards/${this.state.id}/cards?key=${this.state.key}&token=${this.state.token}`)
-       const dataCards = await res2.json();
-       const data=dataList.map(({id:listId,name:listName})=>{
+        try{
+        const res= await fetch(`https://api.trello.com/1/boards/${this.state.id}/lists?key=${localStorage.getItem("key")}&token=${localStorage.getItem("token")}`)
+        if(!res.ok){
+            throw Error(res.statusText)
+        }
+        const dataList = await res.json();
+        const res2= await fetch(`https://api.trello.com/1/boards/${this.state.id}/cards?key=${localStorage.getItem("key")}&token=${localStorage.getItem("token")}`)
+        if(!res2.ok){
+           throw Error(res2.statusText)
+        }
+        const dataCards = await res2.json();
+        const data=dataList.map(({id:listId,name:listName})=>{
         let temp1=[]
         dataCards.map(({id:cardId,name:cardName,idChecklists,idList})=>{
              if(listId==idList){
@@ -38,36 +44,51 @@ class List extends Component{
         return <SimpleList key={listId} url={this.props.match.url} cardData={temp1} listData={{id:listId,name:listName}}/>;
        })
       this.setState({
-     lists:dataList,
-     cards:dataCards,
-     listData:data
-    
-},()=>console.log(this.state.cards,this.state.lists,this.state.listData))
+        lists:dataList,
+        cards:dataCards,
+        listData:data
+    })
+}
+catch(e){
+    console.log(e)
+}
 
-console.log(this.state.listData)
+
 }
 handleSubmit= async (name1)=>{
-    const res=await fetch(`https://api.trello.com/1/boards/${this.state.id}/lists?key=5c73e280ffee643ce764c6df16a719b5&token=374c221b4185e80027a402574dc071768d32336c175b07d821f47c7cdfbaecf2`,{
+    try{
+    const res=await fetch(`https://api.trello.com/1/boards/${this.state.id}/lists?key=${localStorage.getItem("key")}&token=${localStorage.getItem("token")}`,{
             method : 'POST',
             headers: { 
             "Content-type": "application/json; charset=UTF-8"
             } ,
               body:JSON.stringify({name:name1})
             })
-    const newdata=await res.json();
-    console.log(newdata)
-    let newData= <SimpleList key={34} url={this.props.match.url} cardData={[]} listData={{id:newdata.id,name:newdata.name}}/>
-    this.setState({
-        listData:[...this.state.listData,newData]
-    })
+        if(res.ok){
+           const newdata=await res.json();
+            let newData= <SimpleList key={34} url={this.props.match.url} cardData={[]} listData={{id:newdata.id,name:newdata.name}}/>
+            this.setState({
+             listData:[...this.state.listData,newData]
+            })
+       }
+        else{
+            throw Error(res.statusText);
+        }
+        
+    }
+    catch(e){
+      console.log(e)
+    }
 }
        
     render(){
         return (
-            <div style={{maxHeight:"91vh",display:"flex",overflow:"scroll",marginTop:5}}>
+            <div className="List">
+            <div className="ListContainer">
               {this.state.listData}
               <FormDialog Stylename="ListStyle" title="Create New List" submit={this.handleSubmit} label="Enter List Name"></FormDialog>
                
+            </div>
             </div>
         )
     }

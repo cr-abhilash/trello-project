@@ -3,8 +3,7 @@ import './sidebar.css'
 import { Link } from 'react-router-dom'
 function SideBar2() {
     return (
-       
-            <ul className=".nav">
+              <ul className=".nav">
                 <Link  className="Link" to="/">
                      <li><strong>HOME</strong></li>
                 </Link>

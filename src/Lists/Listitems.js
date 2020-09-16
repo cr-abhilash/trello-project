@@ -26,17 +26,25 @@ export default class SimpleList extends React.Component {
   }
    
    handleSubmit=async (name1)=>{
-    const res=await fetch(`https://api.trello.com/1/cards/?key=5c73e280ffee643ce764c6df16a719b5&token=374c221b4185e80027a402574dc071768d32336c175b07d821f47c7cdfbaecf2`,{
+    try{
+    const res=await fetch(`https://api.trello.com/1/cards/?key=${localStorage.getItem("key")}&token=${localStorage.getItem("token")}`,{
       method : 'POST',
       headers: { 
       "Content-type": "application/json; charset=UTF-8"
       } ,
         body:JSON.stringify({idList:this.state.listData.id,name:name1})
       })
+      if(!res.ok){
+        throw Error(res.statusText)
+      }
       const newdata=await res.json();
       this.setState({
         cardData:[...this.state.cardData,{cardName:newdata.name,cardId:newdata.id}]
       })
+    }
+    catch(e){
+      console.log(e)
+    }
   }
   render(){
   return (

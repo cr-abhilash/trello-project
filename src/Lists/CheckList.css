@@ -1,13 +1,12 @@
 .card{
     width:265px ;
     background-color: #F4F5F7 !important;
-    min-height:75px ;
+    min-height:50px ;
     margin-top:5px !important;
     margin-bottom:5px !important;
     margin-left: 10px !important;
     color:black;
+    font-size: 16px !important;
+    
   }
-  .Dialog{
-    min-height:50vh !important;
-    max-height:50vh !important;
-  }
+  

@@ -3,16 +3,30 @@
   box-sizing: border-box;
   padding:0px;
   height:100vh;
+ 
 }
 .Link{
   text-decoration: none;
   
 }
+.List{
+  overflow-x:auto ;
+  background-color: #0767A2;
+}
+
+
+.ListContainer{
+  background-color: #0767A2;
+  padding-top:15px;
+  display: flex;
+  
+}
+
 .content{
   display:flex;
   justify-content: space-around;
   margin-left:10%;
-  margin-right:10%;
+  margin-right:5%;
   margin-top: 3%;
 }
 .content .body{

@@ -1,0 +1,14 @@
+.body h1{
+    text-align: center;
+    color:rgb(21, 150, 182);
+}
+.body p{
+    text-align: center;
+    color:rgb(75, 65, 65);
+}
+.body img{
+    width:500px;
+    height:375px;
+    margin-left: auto;
+    margin-right: auto;
+}

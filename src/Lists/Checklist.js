@@ -1,18 +1,29 @@
 import React, {Fragment} from 'react';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import FormDialog from '../body/Dialog'
-import { TramRounded } from '@material-ui/icons';
+import { withStyles } from '@material-ui/core/styles';
 import './CheckList.css'
 import CheckboxList from './checkBox'
+import { sizing } from '@material-ui/system';
+import PropTypes from 'prop-types';
 
+import { makeStyles } from '@material-ui/core/styles';
 
-export default class CheckList extends React.Component {
+const Styles = {
+    dialogPaper: {
+      minHeight: '80vh',
+      maxHeight: '80vh',
+    },
+    dialogContent:{
+      minHeight:"50vh",
+      maxHeight:"50vh"
+    }
+  };
+ class CheckList extends React.Component {
   constructor(props) {
     super(props)
   
@@ -25,17 +36,29 @@ export default class CheckList extends React.Component {
        
       }
   }
+  
   async componentDidMount(){
      console.log("component mounted")
-     if(this.props.checkId!=0 && this.state.id){
-     const res= fetch(`https://api.trello.com/1/checklist/${this.state.id}?key=${this.state.key}&token=${this.state.token}`)
-    .then((res)=>res.json()).then((data1)=>{
+     try{
+     if(this.props.checkId!==0 && this.state.id){
+     fetch(`https://api.trello.com/1/checklist/${this.state.id}?key=${this.state.key}&token=${this.state.token}`)
+    .then((res)=>{
+      if(!res.ok){
+        throw Error(res.statusText)
+      }
+      return res.json()
+    }).then((data1)=>{
       this.setState({
         data:data1.checkItems
-      },()=>console.log("state data",this.state.data))
+      })
    
   })
 }
+     
+     }
+     catch(e){
+       console.log(e)
+     }
 }
   handleClickOpen = () => {
     this.setState({
@@ -63,29 +86,32 @@ export default class CheckList extends React.Component {
   }
 // check list items
 render(){
-  console.log("rendering")
+  const { classes } = this.props;
   return (
     <Fragment>
        <Button  className="card" onClick={this.handleClickOpen}>
        {this.props.cardName}
       </Button>
-      <Dialog className="Dialog" open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
+      <div className="dialog">
+      <Dialog  open={this.state.open}  classes={{ paper : classes.dialogPaper}} onClose={this.handleClose}  height={500} maxWidth="sm" fullWidth="true" aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">{this.props.cardName}</DialogTitle>
         <FormDialog></FormDialog>
-        <DialogContent>
+        <DialogContent classes={{ paper : classes.dialogContent}} className="DialogContent">
           <CheckboxList checkData={this.state.data}></CheckboxList>
         </DialogContent>
         <DialogActions>
           <Button onClick={this.handleClose} color="primary">
             Cancel
           </Button>
-          <Button  color="primary">
+          <Button  color="primary" onClick={this.handleClose}>
             submit
           </Button>
         </DialogActions>
       </Dialog>
+      </div>
     </Fragment>
   );
   }
 }
 
+export default withStyles(Styles)(CheckList);
