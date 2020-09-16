@@ -21,7 +21,7 @@ class List extends Component{
         console.log(this.props)
         const res= await fetch(`https://api.trello.com/1/boards/${this.state.id}/lists?key=${this.state.key}&token=${this.state.token}`)
        const dataList = await res.json();
-       const res2= await fetch(`https://api.trello.com/1/boards/5eaefe609dc0505416efe976/cards?key=${this.state.key}&token=${this.state.token}`)
+       const res2= await fetch(`https://api.trello.com/1/boards/${this.state.id}/cards?key=${this.state.key}&token=${this.state.token}`)
        const dataCards = await res2.json();
        const data=dataList.map(({id:listId,name:listName})=>{
         let temp1=[]
@@ -41,8 +41,25 @@ class List extends Component{
      lists:dataList,
      cards:dataCards,
      listData:data
-})
+    
+},()=>console.log(this.state.cards,this.state.lists,this.state.listData))
+
 console.log(this.state.listData)
+}
+handleSubmit= async (name1)=>{
+    const res=await fetch(`https://api.trello.com/1/boards/${this.state.id}/lists?key=5c73e280ffee643ce764c6df16a719b5&token=374c221b4185e80027a402574dc071768d32336c175b07d821f47c7cdfbaecf2`,{
+            method : 'POST',
+            headers: { 
+            "Content-type": "application/json; charset=UTF-8"
+            } ,
+              body:JSON.stringify({name:name1})
+            })
+    const newdata=await res.json();
+    console.log(newdata)
+    let newData= <SimpleList key={34} url={this.props.match.url} cardData={[]} listData={{id:newdata.id,name:newdata.name}}/>
+    this.setState({
+        listData:[...this.state.listData,newData]
+    })
 }
        
     render(){
@@ -50,7 +67,7 @@ console.log(this.state.listData)
             <div style={{maxHeight:"91vh",display:"flex",overflow:"scroll",marginTop:5}}>
               {this.state.listData}
               <FormDialog Stylename="ListStyle" title="Create New List" submit={this.handleSubmit} label="Enter List Name"></FormDialog>
-               {/* <Route exact path={`${this.props.match.url}/:cardId`} render={(props)=><CheckList {...props} dialogState={true}/>}></Route> */}
+               
             </div>
         )
     }

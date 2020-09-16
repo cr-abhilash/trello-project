@@ -27,7 +27,7 @@ export default class CheckList extends React.Component {
   }
   async componentDidMount(){
      console.log("component mounted")
-     if(this.props.checkId!=0){
+     if(this.props.checkId!=0 && this.state.id){
      const res= fetch(`https://api.trello.com/1/checklist/${this.state.id}?key=${this.state.key}&token=${this.state.token}`)
     .then((res)=>res.json()).then((data1)=>{
       this.setState({
@@ -42,16 +42,7 @@ export default class CheckList extends React.Component {
       open:true
     })
   };
-  // FormatData = ()=>{
-  //   let listArray=[]
-  //   if(this.state.data[0].length>0){
-  //   for(let i in this.state.data.checkList[0]){
-  //     listArray.push(this.props.checkList[0][i])
-  //   }
-  //   return listArray
-  // }
-  // return 0
-  // }
+  
 
    handleClose = () => {
     this.setState({
@@ -78,8 +69,8 @@ render(){
        <Button  className="card" onClick={this.handleClickOpen}>
        {this.props.cardName}
       </Button>
-      <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">this.props.cardName</DialogTitle>
+      <Dialog className="Dialog" open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">{this.props.cardName}</DialogTitle>
         <FormDialog></FormDialog>
         <DialogContent>
           <CheckboxList checkData={this.state.data}></CheckboxList>
