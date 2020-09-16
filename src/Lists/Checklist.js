@@ -8,10 +8,7 @@ import FormDialog from '../body/Dialog'
 import { withStyles } from '@material-ui/core/styles';
 import './CheckList.css'
 import CheckboxList from './checkBox'
-import { sizing } from '@material-ui/system';
-import PropTypes from 'prop-types';
 
-import { makeStyles } from '@material-ui/core/styles';
 
 const Styles = {
     dialogPaper: {

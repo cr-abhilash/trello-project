@@ -1,9 +1,6 @@
 import React from 'react';
 import FormDialog from '../body/Dialog';
-import Button from '@material-ui/core/Button'
-
 import './ListItem.css'
-import {Link} from 'react-router-dom'
 import CheckList from './Checklist'
 
 

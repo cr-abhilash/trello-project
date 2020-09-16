@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import SimpleList from './Listitems'
 import FormDialog from '../body/Dialog'
-import {Route} from 'react-router-dom'
-import CheckList from './Checklist'
+
 
 class List extends Component{
     constructor(props) {
@@ -32,7 +31,7 @@ class List extends Component{
         const data=dataList.map(({id:listId,name:listName})=>{
         let temp1=[]
         dataCards.map(({id:cardId,name:cardName,idChecklists,idList})=>{
-             if(listId==idList){
+             if(listId===idList){
                  let temp={}
                  temp["cardId"]=cardId;
                  temp["cardName"]=cardName;
