@@ -1,62 +1,61 @@
-.board1{
-    width:180px;
-    height:100px;
-    color:white;
-    border-radius: 10px;
-    padding:5px;
-    margin:10px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size:cover;
+.board1 {
+  width: 180px;
+  height: 100px;
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 10px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-.Button{
-    background-color: #E7E9ED !important;
+.Button {
+  background-color: #e7e9ed !important;
 }
-.newBoard{
-    color:#085B8E !important;
-    text-decoration: none;
-    background-color: khaki;
+.newBoard {
+  color: #085b8e !important;
+  text-decoration: none;
+  background-color: khaki;
 }
-.boards{
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: start;
+.boards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
 }
-.boards Link{
-    text-decoration: none;
+.boards Link {
+  text-decoration: none;
 }
-.body{
-    display: flex;
-    flex-direction: column;
+.body {
+  display: flex;
+  flex-direction: column;
 }
-.body .title{
-    display: flex;
-    color:rgb(21, 150, 182);
-    margin: 10px;
+.body .title {
+  display: flex;
+  color: rgb(21, 150, 182);
+  margin: 10px;
 }
-.ListStyle{
-    width:300px;
-    color:white !important;
-    height: 50px;
-    background-Color:#5397CE;
-    border-radius: 5px;
-    margin-left: 10px;
-    font-size: 14px !important;
+.ListStyle {
+  width: 300px;
+  color: white !important;
+  height: 50px;
+  background-color: #5397ce;
+  border-radius: 5px;
+  margin-left: 10px;
+  font-size: 14px !important;
 }
-.cardButton{
-    width:250px;
-    margin-left: 20px;
-    border:0.1px solid;
-    border-radius: 10px;
-    color:#5d606b !important;
-    font-size: 14px !important;
+.cardButton {
+  width: 250px;
+  margin-left: 20px;
+  border: 0.1px solid;
+  border-radius: 10px;
+  color: #5d606b !important;
+  font-size: 14px !important;
 }
-.checkList{
-    width:250px;
-    margin-left: 20px;
-    border:0.1px solid;
-    border-radius: 10px;
-    color:#5d606b !important;
-    font-size: 14px !important;
-    
+.checkList {
+  width: 250px;
+  margin-left: 20px;
+  border: 0.1px solid;
+  border-radius: 10px;
+  color: #5d606b !important;
+  font-size: 14px !important;
 }

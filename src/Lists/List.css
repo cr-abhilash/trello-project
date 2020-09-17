@@ -1,12 +1,11 @@
-.ListContainer{
-    max-height:88vh;
-    display:flex;
-    overflow:scroll;
-    margin-top:5px;
-    background-color:#0767A2 !important;
-    width: 200%;
-
+.ListContainer {
+  max-height: 88vh;
+  display: flex;
+  overflow: scroll;
+  margin-top: 5px;
+  background-color: #0767a2 !important;
+  width: 200%;
 }
-.List{
-    overflow-x:auto ;
+.List {
+  overflow-x: auto;
 }

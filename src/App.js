@@ -13,7 +13,6 @@ componentDidMount(){
   localStorage.setItem("token","374c221b4185e80027a402574dc071768d32336c175b07d821f47c7cdfbaecf2")
 }
  render(){
-    console.log("component rendered")
     return (
     <Router>
     <div className="App">

@@ -1,12 +1,10 @@
-.card{
-    width:265px ;
-    background-color: #F4F5F7 !important;
-    min-height:50px ;
-    margin-top:5px !important;
-    margin-bottom:5px !important;
-    margin-left: 10px !important;
-    color:black;
-    font-size: 16px !important;
-    
-  }
-  
+.card {
+  width: 265px;
+  background-color: #f4f5f7 !important;
+  min-height: 50px;
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
+  margin-left: 10px !important;
+  color: black;
+  font-size: 16px !important;
+}
