@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
-import getBoards from "./GetBoards";
+import { getBoards } from "./getBoards";
+
 export default combineReducers({
   boards: getBoards,
 });

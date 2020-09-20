@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import List from "./Lists/List";
 import Content from "./content/Content";
 import store from "./store";
-import { Provide } from "react-redux";
+import { Provider } from "react-redux";
 
 class App extends Component {
   componentDidMount() {
@@ -17,18 +17,20 @@ class App extends Component {
   }
   render() {
     return (
-      <Router>
-        <div className="App">
-          <Header></Header>
-          <Switch>
-            <Route
+      <Provider store={store}>
+        <Router>
+          <div className="App">
+            <Header></Header>
+            <Switch>
+              {/* <Route
               path="/boards/:boardid"
               render={(props) => <List {...props} />}
-            />
-            <Route path="/" render={(props) => <Content />} />
-          </Switch>
-        </div>
-      </Router>
+            /> */}
+              <Route path="/" render={(props) => <Content />} />
+            </Switch>
+          </div>
+        </Router>
+      </Provider>
     );
   }
 }
