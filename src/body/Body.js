@@ -3,47 +3,20 @@ import PermIdentityOutlinedIcon from "@material-ui/icons/PermIdentityOutlined";
 import "./body.css";
 import FormDialog from "./Dialog";
 import { connect } from "react-redux";
-import { featchBoardsAll } from "../actionCreators/actionCreators";
+import { featchBoardsAll, addNewBoard } from "../actionCreators/actionCreators";
 class Body extends React.Component {
   componentDidMount() {
     console.log("component mounted");
     this.props.featchBoardsAll();
   }
-  // NavigateList = (event) => {
-  //   let id = event.target.getAttribute("value");
-  //   this.props.history.push(`/boards/${id}`);
-  // };
-  //
-  //
-  // handleSubmit = async (name1) => {
-  //   try {
-  //     const res = await fetch(
-  //       `https://api.trello.com/1/boards?key=${localStorage.getItem(
-  //         "key"
-  //       )}&token=${localStorage.getItem("token")}`,
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-type": "application/json; charset=UTF-8",
-  //         },
-  //         body: JSON.stringify({ name: name1 }),
-  //       }
-  //     );
-  //     if (res.ok) {
-  //       const newdata = await res.json();
-  //       this.setState({
-  //         boardData: [
-  //           ...this.state.boardData,
-  //           { name: newdata.name, id: newdata.id, prefs: newdata.prefs },
-  //         ],
-  //       });
-  //     } else {
-  //       throw Error(res.statusText);
-  //     }
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
+  NavigateList = (event) => {
+    let id = event.target.getAttribute("value");
+    this.props.history.push(`/boards/${id}`);
+  };
+
+  handleSubmit = async (name1) => {
+    this.props.addNewBoard(name1);
+  };
 
   render() {
     return (
@@ -57,7 +30,7 @@ class Body extends React.Component {
           <FormDialog
             Stylename="board1 Button"
             title="Create New Board"
-            // submit={this.handleSubmit}
+            submit={this.handleSubmit}
             label="Enter Board Name"
           ></FormDialog>
           {this.props.boards.map(({ id, name, prefs }) => {
@@ -86,4 +59,4 @@ class Body extends React.Component {
 const mapStateToProps = (state) => ({
   boards: state.boards.boards,
 });
-export default connect(mapStateToProps, { featchBoardsAll })(Body);
+export default connect(mapStateToProps, { featchBoardsAll, addNewBoard })(Body);

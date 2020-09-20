@@ -22,10 +22,10 @@ class App extends Component {
           <div className="App">
             <Header></Header>
             <Switch>
-              {/* <Route
-              path="/boards/:boardid"
-              render={(props) => <List {...props} />}
-            /> */}
+              <Route
+                path="/boards/:boardid"
+                render={(props) => <List {...props} />}
+              />
               <Route path="/" render={(props) => <Content />} />
             </Switch>
           </div>
