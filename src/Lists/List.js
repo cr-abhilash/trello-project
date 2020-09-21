@@ -18,11 +18,11 @@ class List extends Component {
   };
 
   render() {
+    console.log("list rendered");
     return (
       <div className="List">
         <div className="ListContainer">
           {this.props.ListOfCards.map((data) => {
-            console.log("data", data);
             return (
               <SimpleList
                 key={data[0]}

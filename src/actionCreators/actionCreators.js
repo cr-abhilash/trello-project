@@ -127,3 +127,26 @@ export const Post_List = (name1, id) => async (dispatch) => {
     console.log(e);
   }
 };
+
+export const Post_Card = (name1, listId) => (dispatch) => {
+  fetch(
+    `https://api.trello.com/1/cards/?key=${localStorage.getItem(
+      "key"
+    )}&token=${localStorage.getItem("token")}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify({ idList: listId, name: name1 }),
+    }
+  )
+    .then((res) => res.json())
+    .then((newdata) => {
+      dispatch({
+        type: Add_Card,
+        data: { cardName: newdata.name, cardId: newdata.id },
+        listId: listId,
+      });
+    });
+};

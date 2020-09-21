@@ -6,7 +6,13 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-export default function FormDialog({ title, submit, label, Stylename }) {
+export default function FormDialog({
+  title,
+  submit,
+  label,
+  Stylename,
+  listId,
+}) {
   const [open, setOpen] = React.useState(false);
   const [name, setName] = React.useState("");
 
@@ -19,7 +25,8 @@ export default function FormDialog({ title, submit, label, Stylename }) {
   };
   const handleSubmit = () => {
     setOpen(false);
-    submit(name);
+    console.log("listId", listId);
+    submit(name, listId);
   };
   const handleChange = (e) => {
     console.log(e.target.value);
