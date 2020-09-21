@@ -7,8 +7,8 @@ export const getChecklistData = (state = initial_state, action) => {
     case getCheckList:
       return {
         checkListData: action.data,
+        DialogState: true,
       };
-
     default:
       return state;
   }

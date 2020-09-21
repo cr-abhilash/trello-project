@@ -47,17 +47,7 @@ class CheckList extends React.Component {
       open: false,
     });
   };
-  handleSubmit = () => {
-    this.setState({
-      open: false,
-    });
-  };
-  handleChange = (e) => {
-    console.log(e.target.value);
-    this.setState({
-      open: true,
-    });
-  };
+
   // check list items
   render() {
     const { classes } = this.props;

@@ -176,3 +176,7 @@ export const featchCheckList = (id) => (dispatch) => {
     console.log(e);
   }
 };
+
+export const dilogState = (type) => ({
+  type: type,
+});
