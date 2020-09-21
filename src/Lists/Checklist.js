@@ -8,6 +8,8 @@ import FormDialog from "../body/Dialog";
 import { withStyles } from "@material-ui/core/styles";
 import "./CheckList.css";
 import CheckboxList from "./checkBox";
+import { featchCheckList } from "../actionCreators/actionCreators";
+import { connect } from "react-redux";
 
 const Styles = {
   dialogPaper: {
@@ -22,40 +24,19 @@ const Styles = {
 class CheckList extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      token: "374c221b4185e80027a402574dc071768d32336c175b07d821f47c7cdfbaecf2",
-      key: "5c73e280ffee643ce764c6df16a719b5",
       open: false,
-      id: this.props.checkId,
-      data: [],
     };
   }
 
   async componentDidMount() {
     console.log("component mounted");
-    try {
-      if (this.props.checkId !== 0 && this.state.id) {
-        fetch(
-          `https://api.trello.com/1/checklist/${this.state.id}?key=${this.state.key}&token=${this.state.token}`
-        )
-          .then((res) => {
-            if (!res.ok) {
-              throw Error(res.statusText);
-            }
-            return res.json();
-          })
-          .then((data1) => {
-            this.setState({
-              data: data1.checkItems,
-            });
-          });
-      }
-    } catch (e) {
-      console.log(e);
-    }
   }
   handleClickOpen = () => {
+    console.log("onclick");
+    if (this.props.checkId) {
+      this.props.featchCheckList(this.props.checkId);
+    }
     this.setState({
       open: true,
     });
@@ -103,7 +84,7 @@ class CheckList extends React.Component {
               classes={{ paper: classes.dialogContent }}
               className="DialogContent"
             >
-              <CheckboxList checkData={this.state.data}></CheckboxList>
+              <CheckboxList checkData={this.props.checkListData}></CheckboxList>
             </DialogContent>
             <DialogActions>
               <Button onClick={this.handleClose} color="primary">
@@ -119,5 +100,9 @@ class CheckList extends React.Component {
     );
   }
 }
-
-export default withStyles(Styles)(CheckList);
+const mapStateToProps = (state) => ({
+  checkListData: state.checkList.checkListData,
+});
+export default connect(mapStateToProps, { featchCheckList })(
+  withStyles(Styles)(CheckList)
+);

@@ -1,13 +1,10 @@
 import { Add_List, getListOfCards, Add_Card } from "../actionCreators/actions";
 let initial_state = {
   ListOfCards: [],
-  cards: [],
   loading: false,
-  ListsFeatched: false,
-  CardsFeatched: false,
 };
 export const getLists = (state = initial_state, action) => {
-  console.log("featching Data");
+  console.log("featching Data", action);
   switch (action.type) {
     case getListOfCards:
       return {
@@ -27,10 +24,10 @@ export const getLists = (state = initial_state, action) => {
         }
         return data;
       });
-      console.log("newList", newList);
       return {
         ListOfCards: newList,
       };
+
     default:
       return state;
   }

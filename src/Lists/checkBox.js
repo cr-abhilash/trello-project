@@ -18,6 +18,7 @@ export default class CheckboxList extends React.Component {
   }
   componentDidMount() {
     console.log("coponent mount");
+    console.log("checkData", this.props.checkData);
     this.setState({
       list1: this.props.checkData,
     });

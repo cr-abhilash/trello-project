@@ -5,3 +5,4 @@ export const Add_Card = "Add new card";
 export const FEATCH_Lists = "Featch lists";
 export const Add_List = "Add new list";
 export const getListOfCards = "getListOfCards";
+export const getCheckList = "getCheckList";
