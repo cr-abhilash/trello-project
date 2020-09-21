@@ -5,8 +5,6 @@ let initial_state = {
   loading: false,
 };
 export const getBoards = (state = initial_state, action) => {
-  console.log("featching Data");
-  console.log(state);
   switch (action.type) {
     case FEATCH_BOARDS:
       return {

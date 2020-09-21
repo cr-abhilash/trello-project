@@ -1,29 +1,22 @@
-import {
-  FEATCH_Cards,
-  ADD_List,
-  FEATCH_Lists,
-} from "../actionCreators/actions";
+import { Add_List, getListOfCards } from "../actionCreators/actions";
 let initial_state = {
-  Lists: [],
-  Cards: [],
+  ListOfCards: [],
   loading: false,
+  ListsFeatched: false,
+  CardsFeatched: false,
 };
 export const getLists = (state = initial_state, action) => {
   console.log("featching Data");
-  console.log(state);
   switch (action.type) {
-    case FEATCH_Lists:
+    case getListOfCards:
       return {
-        Lists: action.listData,
+        ListOfCards: action.data,
       };
-    case FEATCH_Cards:
+    case Add_List:
+      let list = state.ListOfCards;
       return {
-        Cards: action.cardData,
+        ListOfCards: [...list, action.newList],
       };
-    // case ADD_List:
-    //   return {
-    //     Lists:[...Lists,actio]
-    //   };
     default:
       return state;
   }

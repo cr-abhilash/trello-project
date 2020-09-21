@@ -12,12 +12,12 @@ export default class SimpleList extends React.Component {
       cardData: [],
     };
   }
-  componentDidMount() {
-    this.setState({
-      listData: this.props.listData,
-      cardData: this.props.cardData,
-    });
-  }
+  // componentDidMount() {
+  //   console.log("list and card data", this.props.listData, this.props.cardData);
+  //   this.setState({
+  //     cardData: this.props.cardData,
+  //   });
+  // }
 
   handleSubmit = async (name1) => {
     try {
@@ -30,19 +30,15 @@ export default class SimpleList extends React.Component {
           headers: {
             "Content-type": "application/json; charset=UTF-8",
           },
-          body: JSON.stringify({ idList: this.state.listData.id, name: name1 }),
+          body: JSON.stringify({ idList: this.props.listData.id, name: name1 }),
         }
       );
       if (!res.ok) {
         throw Error(res.statusText);
       }
       const newdata = await res.json();
-      this.setState({
-        cardData: [
-          ...this.state.cardData,
-          { cardName: newdata.name, cardId: newdata.id },
-        ],
-      });
+
+      this.props.cardData.push({ cardName: newdata.name, cardId: newdata.id });
     } catch (e) {
       console.log(e);
     }
@@ -50,11 +46,10 @@ export default class SimpleList extends React.Component {
   render() {
     return (
       <div className="root">
-        <div className="header2">{this.state.listData.name}</div>
+        <div className="header2">{this.props.listData.name}</div>
         <div className="cards">
-          {this.state.cardData.map((data) => {
-            console.log(data.checkId);
-            return <CheckList {...data}></CheckList>;
+          {this.props.cardData.map((data) => {
+            return <CheckList key={data.cardId} {...data}></CheckList>;
           })}
         </div>
         <div className="footer">

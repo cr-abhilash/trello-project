@@ -1,9 +1,9 @@
 import {
   FEATCH_BOARDS,
   ADD_BOARD,
-  FEATCH_Lists,
-  ADD_Card,
-  FEATCH_Cards,
+  Add_Card,
+  Add_List,
+  getListOfCards,
 } from "./actions";
 
 export const featchBoardsAll = () => async (dispatch) => {
@@ -43,8 +43,6 @@ export const addNewBoard = (name1) => async (dispatch) => {
     );
     if (res.ok) {
       const newdata = await res.json();
-      console.log(newdata);
-      console.log(name1);
       dispatch({
         type: ADD_BOARD,
         board: { name: newdata.name, id: newdata.id, prefs: newdata.prefs },
@@ -57,7 +55,7 @@ export const addNewBoard = (name1) => async (dispatch) => {
   }
 };
 
-export const fetchListAll = (id) => async (dispatch) => {
+export const DrawListsOfCards = (id) => async (dispatch) => {
   try {
     const res = await fetch(
       `https://api.trello.com/1/boards/${id}/lists?key=${localStorage.getItem(
@@ -68,17 +66,6 @@ export const fetchListAll = (id) => async (dispatch) => {
       throw Error(res.statusText);
     }
     const dataList = await res.json();
-    console.log(dataList);
-    dispatch({
-      type: FEATCH_Lists,
-      listData: dataList,
-    });
-  } catch (e) {
-    console.log(e);
-  }
-};
-export const fetchCardAll = (id) => async (dispatch) => {
-  try {
     const res2 = await fetch(
       `https://api.trello.com/1/boards/${id}/cards?key=${localStorage.getItem(
         "key"
@@ -88,11 +75,54 @@ export const fetchCardAll = (id) => async (dispatch) => {
       throw Error(res2.statusText);
     }
     const dataCards = await res2.json();
-    console.log(dataCards);
-    dispatch({
-      type: FEATCH_Cards,
-      cardData: dataCards,
+    const content = dataList.map(({ id: listId, name: listName }) => {
+      let temp1 = [listId, listName, []];
+      dataCards.map(({ id: cardId, name: cardName, idChecklists, idList }) => {
+        if (listId === idList) {
+          let temp = {};
+          // temp["listId"] = listId;
+          // temp["listName"] = listName;
+          temp["cardId"] = cardId;
+          temp["cardName"] = cardName;
+          temp["checkId"] = idChecklists[0] ? idChecklists[0] : 0;
+          temp1[2].push(temp);
+        }
+      });
+      return temp1;
     });
+    dispatch({
+      type: getListOfCards,
+      data: content,
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const Post_List = (name1, id) => async (dispatch) => {
+  try {
+    const res = await fetch(
+      `https://api.trello.com/1/boards/${id}/lists?key=${localStorage.getItem(
+        "key"
+      )}&token=${localStorage.getItem("token")}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+        body: JSON.stringify({ name: name1 }),
+      }
+    );
+    if (res.ok) {
+      const newData = await res.json();
+      let newList = [newData.id, newData.name, []];
+      dispatch({
+        type: Add_List,
+        newList: newList,
+      });
+    } else {
+      throw Error(res.statusText);
+    }
   } catch (e) {
     console.log(e);
   }
