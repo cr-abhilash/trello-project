@@ -1,19 +1,17 @@
 import React, { Component } from "react";
 import SimpleList from "./Listitems";
-import FormDialog from "../body/Dialog";
-import { DrawListsOfCards, Post_List } from "../actionCreators/actionCreators";
+import FormDialog from "../content/body/Dialog";
+import {
+  DrawListsOfCards,
+  Post_List,
+} from "../../actionCreators/actionCreators";
 import { connect } from "react-redux";
 class List extends Component {
-  constructor(props) {
-    super(props);
-  }
   componentDidMount() {
-    console.log("component mounted", this.props);
     this.props.DrawListsOfCards(this.props.match.params.boardid);
   }
 
   handleSubmit = (name1) => {
-    console.log("Posting List");
     this.props.Post_List(name1, this.props.match.params.boardid);
   };
 

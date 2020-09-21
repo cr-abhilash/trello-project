@@ -3,7 +3,10 @@ import PermIdentityOutlinedIcon from "@material-ui/icons/PermIdentityOutlined";
 import "./body.css";
 import FormDialog from "./Dialog";
 import { connect } from "react-redux";
-import { featchBoardsAll, addNewBoard } from "../actionCreators/actionCreators";
+import {
+  featchBoardsAll,
+  addNewBoard,
+} from "../../../actionCreators/actionCreators";
 class Body extends React.Component {
   componentDidMount() {
     console.log("component mounted");

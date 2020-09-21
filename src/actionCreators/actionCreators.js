@@ -166,7 +166,6 @@ export const featchCheckList = (id) => (dispatch) => {
         return res.json();
       })
       .then((data1) => {
-        console.log("checklist data", data1);
         dispatch({
           type: getCheckList,
           data: data1.checkItems,

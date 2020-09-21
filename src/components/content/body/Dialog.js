@@ -25,11 +25,10 @@ export default function FormDialog({
   };
   const handleSubmit = () => {
     setOpen(false);
-    console.log("listId", listId);
+
     submit(name, listId);
   };
   const handleChange = (e) => {
-    console.log(e.target.value);
     setName(e.target.value);
   };
 

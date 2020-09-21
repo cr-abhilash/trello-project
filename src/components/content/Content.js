@@ -1,8 +1,8 @@
 import React from "react";
-import Body from "../body/Body";
-import Home from "../body/Home";
+import Body from "./body/Body";
+import Home from "./body/Home";
 import { Route } from "react-router-dom";
-import SideBar2 from "../sidebar/sideBar2";
+import SideBar2 from "./sidebar/sideBar2";
 function Content(prop) {
   return (
     <div className="content">

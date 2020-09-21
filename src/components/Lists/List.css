@@ -1,5 +1,5 @@
 .ListContainer {
-  max-height: 88vh;
+  max-height: 90vh;
   display: flex;
   overflow: scroll;
   margin-top: 5px;

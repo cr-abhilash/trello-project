@@ -4,7 +4,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Checkbox from "@material-ui/core/Checkbox";
-import FormDialog from "../body/Dialog";
+import FormDialog from "../content/body/Dialog";
 
 export default class CheckboxList extends React.Component {
   constructor(props) {
@@ -18,7 +18,7 @@ export default class CheckboxList extends React.Component {
   }
   componentDidMount() {
     console.log("coponent mount");
-    console.log("checkData", this.props.checkData);
+
     this.setState({
       list1: this.props.checkData,
     });
@@ -31,7 +31,6 @@ export default class CheckboxList extends React.Component {
       list1: this.state.checkData,
       id1: this.state.id1 + 1,
     });
-    console.log(this.state.id1);
   };
 
   handleToggle = (value) => () => {

@@ -1,8 +1,6 @@
 import React from "react";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
-import { featchBoardsAll } from "../actionCreators/actionCreators";
-import { connect } from "react-redux";
 function SideBar2(props) {
   // const handleClick = () => {
   //   props.featchBoardsAll();
@@ -19,7 +17,7 @@ function SideBar2(props) {
           <strong>BOARDS</strong>
         </li>
       </Link>
-      <Link className="Link">
+      <Link className="Link" to="#">
         <li>
           <strong>TEMPLATES</strong>
         </li>

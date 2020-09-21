@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
-import Header from "./Header/Header";
+import Header from "./components/content/Header/Header";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import List from "./Lists/List";
-import Content from "./content/Content";
+import List from "./components/Lists/List";
+import Content from "./components/content/Content";
 import store from "./store";
 import { Provider } from "react-redux";
 

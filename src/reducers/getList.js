@@ -4,7 +4,6 @@ let initial_state = {
   loading: false,
 };
 export const getLists = (state = initial_state, action) => {
-  console.log("featching Data", action);
   switch (action.type) {
     case getListOfCards:
       return {
@@ -17,9 +16,9 @@ export const getLists = (state = initial_state, action) => {
       };
     case Add_Card:
       let list1 = state.ListOfCards;
-      console.log("oldList", list1, "action", action);
+
       let newList = list1.map((data) => {
-        if (data[0] == action.listId) {
+        if (data[0] === action.listId) {
           data[2].push(action.data);
         }
         return data;

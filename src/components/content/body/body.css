@@ -20,7 +20,7 @@
 .boards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: start;
+  justify-content: flex-start;
 }
 .boards Link {
   text-decoration: none;

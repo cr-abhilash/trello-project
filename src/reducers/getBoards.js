@@ -1,4 +1,3 @@
-import { ContactsOutlined } from "@material-ui/icons";
 import { FEATCH_BOARDS, ADD_BOARD } from "../actionCreators/actions";
 let initial_state = {
   boards: [],

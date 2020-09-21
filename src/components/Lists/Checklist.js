@@ -4,11 +4,11 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import FormDialog from "../body/Dialog";
+import FormDialog from "../content/body/Dialog";
 import { withStyles } from "@material-ui/core/styles";
 import "./CheckList.css";
 import CheckboxList from "./checkBox";
-import { featchCheckList } from "../actionCreators/actionCreators";
+import { featchCheckList } from "../../actionCreators/actionCreators";
 import { connect } from "react-redux";
 
 const Styles = {
@@ -36,6 +36,7 @@ class CheckList extends React.Component {
     console.log("onclick");
     if (this.props.checkId) {
       this.props.featchCheckList(this.props.checkId);
+    } else {
     }
     this.setState({
       open: true,
@@ -50,6 +51,7 @@ class CheckList extends React.Component {
 
   // check list items
   render() {
+    console.log("component rendered");
     const { classes } = this.props;
     return (
       <Fragment>
@@ -74,7 +76,11 @@ class CheckList extends React.Component {
               classes={{ paper: classes.dialogContent }}
               className="DialogContent"
             >
-              <CheckboxList checkData={this.props.checkListData}></CheckboxList>
+              <CheckboxList
+                checkData={
+                  this.props.checkListData ? this.props.checkListData : []
+                }
+              ></CheckboxList>
             </DialogContent>
             <DialogActions>
               <Button onClick={this.handleClose} color="primary">
