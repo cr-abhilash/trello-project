@@ -5,6 +5,7 @@ import {
   Add_List,
   getListOfCards,
   getCheckList,
+  DialogClose,
 } from "./actions";
 
 export const featchBoardsAll = () => async (dispatch) => {
@@ -154,28 +155,35 @@ export const Post_Card = (name1, listId) => (dispatch) => {
 
 export const featchCheckList = (id) => (dispatch) => {
   try {
-    fetch(
-      `https://api.trello.com/1/checklist/${id}?key=${localStorage.getItem(
-        "key"
-      )}&token=${localStorage.getItem("token")}`
-    )
-      .then((res) => {
-        if (!res.ok) {
-          throw Error(res.statusText);
-        }
-        return res.json();
-      })
-      .then((data1) => {
-        dispatch({
-          type: getCheckList,
-          data: data1.checkItems,
+    if (id) {
+      fetch(
+        `https://api.trello.com/1/checklist/${id}?key=${localStorage.getItem(
+          "key"
+        )}&token=${localStorage.getItem("token")}`
+      )
+        .then((res) => {
+          if (!res.ok) {
+            throw Error(res.statusText);
+          }
+          return res.json();
+        })
+        .then((data1) => {
+          dispatch({
+            type: getCheckList,
+            data: data1.checkItems,
+          });
         });
+    } else {
+      dispatch({
+        type: getCheckList,
+        data: [],
       });
+    }
   } catch (e) {
     console.log(e);
   }
 };
 
-export const dilogState = (type) => ({
-  type: type,
+export const CloseDialog = () => ({
+  type: DialogClose,
 });

@@ -8,7 +8,10 @@ import FormDialog from "../content/body/Dialog";
 import { withStyles } from "@material-ui/core/styles";
 import "./CheckList.css";
 import CheckboxList from "./checkBox";
-import { featchCheckList } from "../../actionCreators/actionCreators";
+import {
+  featchCheckList,
+  CloseDialog,
+} from "../../actionCreators/actionCreators";
 import { connect } from "react-redux";
 
 const Styles = {
@@ -22,31 +25,12 @@ const Styles = {
   },
 };
 class CheckList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: false,
-    };
-  }
-
-  async componentDidMount() {
-    console.log("component mounted");
-  }
   handleClickOpen = () => {
-    console.log("onclick");
-    if (this.props.checkId) {
-      this.props.featchCheckList(this.props.checkId);
-    } else {
-    }
-    this.setState({
-      open: true,
-    });
+    this.props.featchCheckList(this.props.checkId);
   };
 
   handleClose = () => {
-    this.setState({
-      open: false,
-    });
+    this.props.CloseDialog();
   };
 
   // check list items
@@ -60,7 +44,7 @@ class CheckList extends React.Component {
         </Button>
         <div className="dialog">
           <Dialog
-            open={this.state.open}
+            open={this.props.open}
             classes={{ paper: classes.dialogPaper }}
             onClose={this.handleClose}
             height={500}
@@ -98,7 +82,8 @@ class CheckList extends React.Component {
 }
 const mapStateToProps = (state) => ({
   checkListData: state.checkList.checkListData,
+  open: state.checkList.DialogState,
 });
-export default connect(mapStateToProps, { featchCheckList })(
+export default connect(mapStateToProps, { featchCheckList, CloseDialog })(
   withStyles(Styles)(CheckList)
 );

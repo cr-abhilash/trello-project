@@ -14,7 +14,7 @@ class SimpleList extends React.Component {
     };
   }
   componentDidMount() {
-    console.log("list and card data", this.props.listData, this.props.cardData);
+   
     this.setState({
       cardData: this.props.cardData,
       listData: this.props.listData,
